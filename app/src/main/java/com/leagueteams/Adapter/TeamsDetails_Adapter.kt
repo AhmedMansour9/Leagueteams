@@ -23,9 +23,7 @@ class TeamsDetails_Adapter (context: Context, val ListTeams: List<TeamDetails_Re
         holder.bindItems(ListTeams.get(position))
 
     }
-    fun onClick(teamDetails: DetailsTeam_View){
-        this.TeamDetails=teamDetails
-    }
+
 
     override fun getItemCount(): Int {
         return ListTeams.size
@@ -35,7 +33,7 @@ class TeamsDetails_Adapter (context: Context, val ListTeams: List<TeamDetails_Re
         private val context: Context = itemView.context
 
         fun bindItems(dataModel: TeamDetails_Response.Squad) {
-            itemView.T_Name.text= String.format(context.getString(R.string.teamname)+" "+ dataModel.name);
+            itemView.T_Name.text= String.format(context.getString(R.string.playername)+" "+ dataModel.name);
             itemView.T_postion.text=String.format(context.getString(R.string.postion)+" "+  dataModel.position);
             itemView.T_nationality.text=String.format(context.getString(R.string.nationality)+" "+  dataModel.nationality);
             itemView.T_shirtNumber.text=String.format(context.getString(R.string.shirtNumber)+" "+  dataModel.shirtNumber);

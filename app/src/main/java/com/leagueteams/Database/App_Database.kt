@@ -12,7 +12,7 @@ import com.leagueteams.View.TeamDetailsDao
 import com.leagueteams.View.TeamsDao
 
 
-@Database(entities = arrayOf(Teams_Response.Team::class,TeamDetails_Response.Squad::class),version = 1)
+@Database(entities = arrayOf(Teams_Response.Team::class,TeamDetails_Response.Squad::class),version = 1,exportSchema = false)
 abstract  class  App_Database : RoomDatabase() {
 
 

@@ -9,6 +9,8 @@
 
 
 
+
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarhome"
         android:layout_width="match_parent"
@@ -18,8 +20,17 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
+    <TextView
+        android:id="@+id/T_Favourit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/favouritlist"
+        android:textColor="#FA0303"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbarhome"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"

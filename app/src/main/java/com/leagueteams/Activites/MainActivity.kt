@@ -1,5 +1,6 @@
 package com.leagueteams.Activites
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.Observer
@@ -11,13 +12,23 @@ import com.leagueteams.Database.App_Database
 import com.leagueteams.Model.Teams_Response
 import com.leagueteams.NetworkState
 import com.leagueteams.R
+import com.leagueteams.View.Favourit_View
 import com.leagueteams.ViewModel.Teams_ViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
+import com.leagueteams.GlobalBus
+import android.widget.Toast
+import android.widget.TextView
+import org.greenrobot.eventbus.Subscribe
+import com.leagueteams.Events
+import org.greenrobot.eventbus.EventBus
 
-class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
+
+
+
+class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener , Favourit_View {
 
     internal var db:App_Database? = null
      var CheckNetwork= NetworkState()
@@ -28,6 +39,15 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
         setContentView(R.layout.activity_main)
         initialize()
         SwipRefresh()
+        openFavouritList()
+
+
+    }
+    fun openFavouritList(){
+        T_Favourit.setOnClickListener(){
+            val intent = Intent(this, FavouritList::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -82,6 +102,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
             LinearLayoutManager.VERTICAL,
             false
         )
+        listAdapter.onClick(this)
         Recycle_Teams.adapter=listAdapter
     }
 
@@ -136,6 +157,32 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
          }
         }
         return checkid
+    }
+
+    override fun like(teamid:Int,like:Int) {
+        doAsync {
+            db!!.TeamsDao().update(teamid, like)
+        }
+
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+
+        if (!EventBus.getDefault().isRegistered(this)) { EventBus.getDefault().register(this); }
+    }
+
+
+    @Subscribe
+    fun getMessage(fragmentActivityMessage: Events.ActivityActivityMessage) {
+       if(fragmentActivityMessage.message.equals("true")){
+           runOnUiThread {
+               // Stuff that updates the UI
+               SwipRefresh()
+           }
+       }
+
     }
 
 

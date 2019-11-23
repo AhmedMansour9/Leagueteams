@@ -9,5 +9,6 @@
     <string name="postion">Position: </string>
     <string name="nationality">Nationality: </string>
     <string name="shirtNumber">Number: </string>
+    <string name="favouritlist">Favourit List</string>
 
 </resources>

@@ -85,9 +85,14 @@ data class Teams_Response(
         @ColumnInfo(name="id")
         @SerializedName("id")
          var id: Int = 0,
+
         @ColumnInfo(name="name")
         @SerializedName("name")
         var name: String? = null,
+
+        @ColumnInfo(name="is_liked")
+        var islike: Int = 0,
+
         @ColumnInfo(name="shortName")
         @SerializedName("shortName")
         var shortName: String? = null,
