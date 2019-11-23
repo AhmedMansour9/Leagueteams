@@ -85,7 +85,6 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
         Recycle_Teams.adapter=listAdapter
     }
 
-
     override fun onRefresh() {
         if(CheckNetwork.verifyAvailableNetwork(applicationContext )){
             getAllOTeams()
