@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">League teams:  </string>
+    <string name="teamname">Team name:  </string>
+    <string name="teawebsite">Team Website:  </string>
+    <string name="clubcolors">Club colors:  </string>
+    <string name="venue">Venue:  </string>
+    <string name="playername">Player Name:  </string>
+    <string name="teams">Teams</string>
+    <string name="postion">Position: </string>
+    <string name="nationality">Nationality: </string>
+    <string name="shirtNumber">Number: </string>
+
+</resources>
